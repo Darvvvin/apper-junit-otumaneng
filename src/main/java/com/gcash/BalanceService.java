@@ -12,12 +12,29 @@ public class BalanceService extends AccountRepository {
     }
 
     public void debit(String id, Double amount) {
+        Account newBalance = getAccount(id).debitFromAccount(amount);
+        Account toReplace = accounts
+                .stream()
+                .filter(account -> id.equals(account.id()))
+                .findFirst()
+                .orElse(null);
 
+        accounts.set(accounts.indexOf(toReplace), newBalance);
     }
 
     public void credit(String id, Double amount) {
+        Account newBalance = getAccount(id).creditToAccount(amount);
+        Account toReplace = accounts
+                .stream()
+                .filter(account -> id.equals(account.id()))
+                .findFirst()
+                .orElse(null);
+
+        accounts.set(accounts.indexOf(toReplace), newBalance);
     }
 
     public void transfer(String from, String to, Double amount) {
+        debit(from, amount);
+        credit(to, amount);
     }
 }

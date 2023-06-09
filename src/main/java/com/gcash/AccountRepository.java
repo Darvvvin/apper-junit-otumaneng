@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class AccountRepository {
-    private final List<Account> accounts = new ArrayList<>();
+    protected final List<Account> accounts = new ArrayList<>();
 
     public String createAccount(String name, Double initialBalance) {
         String id = UUID.randomUUID().toString();

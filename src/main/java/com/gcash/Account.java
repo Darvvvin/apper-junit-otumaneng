@@ -5,7 +5,11 @@ public record Account(String id, String name, Double balance) {
         return this.balance;
     }
 
-    public Account debitFromAccount(String id) {
-        return new Account(id, name, balance);
+    public Account debitFromAccount(Double amount) {
+        return new Account(id, name, (balance - amount));
+    }
+
+    public Account creditToAccount(Double amount) {
+        return new Account(id, name, (balance + amount));
     }
 }
