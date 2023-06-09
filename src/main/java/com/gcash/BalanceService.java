@@ -1,6 +1,6 @@
 package com.gcash;
 
-public class BalanceService {
+public class BalanceService extends AccountRepository {
 
     /**
      * NOTE: You are expected to use one repository instance in all methods, not one repository per method.
@@ -8,7 +8,7 @@ public class BalanceService {
      */
 
     public Double getBalance(String id) {
-        return null;
+        return getAccount(id).getBalance();
     }
 
     public void debit(String id, Double amount) {
@@ -16,10 +16,8 @@ public class BalanceService {
     }
 
     public void credit(String id, Double amount) {
-
     }
 
     public void transfer(String from, String to, Double amount) {
-
     }
 }
